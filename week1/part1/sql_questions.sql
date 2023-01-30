@@ -24,23 +24,6 @@ with astoria_pickups as (
 
 select 
 	"DOLocationID",
-	sum(tip_amount),
-	t."Zone"
-from astoria_pickups a, taxi_zone_lookup t
-where a."DOLocationID" = t."LocationID"
-group by "DOLocationID", t."Zone"
-order by sum(tip_amount) desc
-
-
--- Question 6. Largest tip
-with astoria_pickups as (
-	select *
-	from tripdata_2019_01 t
-	where t."PULocationID" in (7)
-)
-
-select 
-	"DOLocationID",
 	z."Zone"
 from astoria_pickups a
 inner join taxi_zone_lookup z
